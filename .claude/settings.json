@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/hxvin/Documents/GitHub/grimoire/.streamlit\" \"c:/Users/hxvin/Documents/GitHub/grimoire/data\" \"c:/Users/hxvin/Documents/GitHub/grimoire/pages\")",
+      "Bash(py -3.11 -m venv .venv)",
+      "Bash(.venv/Scripts/pip install *)",
+      "Bash(.venv/Scripts/python -c \"import app\")",
+      "Bash(.venv/Scripts/python -c ' *)",
+      "Bash(.venv/Scripts/streamlit run *)",
+      "Bash(timeout 5)",
+      "Bash(.venv/Scripts/python scripts/fetch_images.py)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\hxvin\\Documents\\GitHub\\grimoire"
+    ]
+  }
+}

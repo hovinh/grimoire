@@ -1,0 +1,623 @@
+[
+  {
+    "id": "codenames",
+    "title": "Codenames",
+    "weight": "light",
+    "bgg_weight": 1.3,
+    "min_players": 2,
+    "max_players": 8,
+    "play_time": "15–30 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Codenames",
+    "mechanics": [
+      "word association",
+      "deduction",
+      "team play"
+    ],
+    "description": "Two rival spymasters know the secret identities of 25 agents. Their teammates know the agents only by codenames. Each spymaster gives one-word clues to lead their team to contact the right agents—without stumbling onto the enemy's agents or the deadly assassin.",
+    "theme": "Cold War espionage. You and your partner are rival spymasters who know the secret identities of 25 agents hidden among innocent bystanders. Your operatives see only the codenames, and you must guide them to yours before the other team finds theirs—without ever revealing who the assassin is.",
+    "objective": "Be the first team to make contact with all your agents. Touch the assassin, and your team loses instantly.",
+    "setup": [
+      "Arrange 25 random word cards in a 5×5 grid.",
+      "One player from each team becomes the Spymaster; they sit together on one side of the table.",
+      "Spymasters draw a random Key Card and place it in the stand so only they can see it. It shows which 9 words belong to Blue, which 8 belong to Red, which 7 are innocent bystanders, and which 1 is the assassin.",
+      "The team whose color appears in the corner of the Key Card goes first—they have 9 agents and take the first turn."
+    ],
+    "round_structure": [
+      "The active Spymaster gives exactly ONE word clue followed by a number (e.g., 'animal, 3').",
+      "Their operatives discuss and touch one word card at a time.",
+      "If correct: the agent card is placed on that word and the team may keep guessing (up to clue number + 1 total).",
+      "If wrong: the guessing ends immediately and the revealed card (bystander, enemy agent, or assassin) is placed on that word.",
+      "Play passes to the other team."
+    ],
+    "main_actions": [
+      "**Give a clue** (Spymaster only): Say one word and a number. The word must relate to one or more cards on the board; the number is how many.",
+      "**Guess** (Operatives): Touch a word card. Correct agents keep your turn going; an incorrect card ends it immediately.",
+      "**Pass**: End your guessing turn voluntarily without touching a card (you must have guessed at least once)."
+    ],
+    "end_game_condition": "**Win**: Your team contacts all your agents before the opposing team contacts theirs.\n**Lose**: Any operative touches the Assassin card — that team loses immediately, regardless of scores.",
+    "quiz": [
+      {
+        "question": "What happens when an operative touches the Assassin card?",
+        "options": [
+          "The opposing team scores 2 bonus points",
+          "That team immediately loses the game",
+          "The card is flipped and play continues",
+          "The other team takes an extra turn"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "How many word cards are arranged at the start of a game?",
+        "options": [
+          "16",
+          "20",
+          "25",
+          "30"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "A Spymaster's clue must consist of:",
+        "options": [
+          "One word and a number",
+          "Two words maximum",
+          "One complete sentence",
+          "Any number of related words"
+        ],
+        "answer_index": 0
+      },
+      {
+        "question": "After correctly guessing an agent, operatives may:",
+        "options": [
+          "Immediately end their turn",
+          "Continue guessing up to the clue number, plus one bonus guess",
+          "Draw a replacement word card",
+          "Have the Spymaster give a new clue"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The team that goes first in Codenames has how many agents to contact?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "answer_index": 2
+      }
+    ],
+    "teaching_tips": [
+      "Start by explaining the Spymaster vs. Operative roles before touching any cards—the asymmetry is the whole game.",
+      "Use a live example before the first turn: 'If I say animal, 3, that means three cards on the board relate to animals.'",
+      "Remind Spymasters they cannot give clues using any word visible on the board, or any form of those words.",
+      "For absolute beginners, do a single practice round where the Key Card is visible to everyone—it demystifies how the game works fast."
+    ],
+    "strategy_tips": [
+      "Spymasters: link 2–3 cards with one clue to pull ahead, but never force a connection that risks the assassin.",
+      "Operatives: if you're unsure after your bonus guess, pass—ending with 0 extra guesses is safer than touching the assassin.",
+      "Mentally map the assassin first and exclude any clue that could accidentally lead there.",
+      "Use the '+1 bonus guess' strategically to revisit a card you were confident about from a previous clue."
+    ],
+    "image_path": "data/images/codenames.jpg"
+  },
+  {
+    "id": "ticket-to-ride",
+    "title": "Ticket to Ride",
+    "weight": "light",
+    "bgg_weight": 1.9,
+    "min_players": 2,
+    "max_players": 5,
+    "play_time": "45–75 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Ticket+to+Ride",
+    "mechanics": [
+      "route building",
+      "set collection",
+      "card drafting"
+    ],
+    "description": "Ambitious railroad barons race to claim railway routes across North America and complete cross-country destination tickets before rivals block the way. Simple rules, deep tension: one blocked route can unravel an entire strategy.",
+    "theme": "Early 20th century railway travel across North America. Players are railroad barons funding ambitious transcontinental routes, racing to complete their secret journey tickets before opponents claim the tracks they need.",
+    "objective": "Score the most points by claiming railway routes, completing destination tickets, and earning the Longest Continuous Route bonus (10 pts). The player with the most points wins.",
+    "setup": [
+      "Lay out the board (map of North America).",
+      "Shuffle the train car cards and deal 4 to each player; place 5 face-up beside the deck.",
+      "Shuffle destination tickets and deal 3 to each player—everyone must keep at least 2, discarding the rest face-down.",
+      "Each player takes their 45 colored train car pieces and the matching scoring marker."
+    ],
+    "round_structure": [
+      "On your turn, do exactly ONE of three actions:",
+      "1. **Draw train car cards**: Take 2 cards (from face-up display or blind from deck). A face-up Locomotive counts as both draws.",
+      "2. **Claim a route**: Play matching colored train cards equal to the route's length; place your train pieces on those spaces and score immediately.",
+      "3. **Draw destination tickets**: Draw 3 tickets, keep at least 1, discard the rest face-down."
+    ],
+    "main_actions": [
+      "**Draw cards**: Take 2 train car cards. Face-up cards are chosen openly; deck cards are blind. Taking a face-up Locomotive uses both draws.",
+      "**Claim a route**: Spend matching colored train cards equal to route length, place your pieces, score points per the chart (1 car=1pt, 2=2, 3=4, 4=7, 5=10, 6=15).",
+      "**Draw tickets**: Draw 3 destination tickets; keep at least 1. Completed tickets = bonus points at end; incomplete = penalty."
+    ],
+    "end_game_condition": "When any player places their last train car (has **2 or fewer remaining**), each player (including that player) takes one final turn. Then score: add destination ticket bonuses/penalties and award the 10-point Longest Continuous Route bonus. Highest score wins.",
+    "quiz": [
+      {
+        "question": "On your turn in Ticket to Ride, how many actions can you take?",
+        "options": [
+          "Exactly one",
+          "Up to two",
+          "As many as your cards allow",
+          "Exactly three"
+        ],
+        "answer_index": 0
+      },
+      {
+        "question": "What happens to incomplete destination tickets at game end?",
+        "options": [
+          "Nothing — they are ignored",
+          "Subtract their point value from your score",
+          "Discard all your train cards",
+          "Lose your longest route bonus"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "Taking a face-up Locomotive (Wild) card counts as:",
+        "options": [
+          "Just one of your two draws",
+          "Both draws for that turn",
+          "An extra free draw on top of your two",
+          "Half a draw, rounded up"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The end-game final round triggers when any player has how many train pieces left?",
+        "options": [
+          "5 or fewer",
+          "3 or fewer",
+          "2 or fewer",
+          "0 remaining"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "When drawing new destination tickets, you must keep at least:",
+        "options": [
+          "All three drawn",
+          "At least two",
+          "At least one",
+          "None — you may discard all"
+        ],
+        "answer_index": 2
+      }
+    ],
+    "teaching_tips": [
+      "Before the game starts, show players the scoring chart printed on the board — seeing that a 6-car route scores 15 points immediately clarifies why long routes matter.",
+      "Emphasize that destination tickets are secret until end scoring; encourage players to build toward multiple tickets quietly.",
+      "For first games, suggest everyone plan at least two non-overlapping routes before claiming anything — getting blocked early is the most common first-timer frustration.",
+      "Point out the Longest Route bonus (10 pts) upfront — missing it feels unfair to new players who didn't know it existed."
+    ],
+    "strategy_tips": [
+      "Prioritize long routes (5–6 cars) early — they score disproportionately more points and are the first to get blocked.",
+      "Hold Locomotives in reserve rather than playing them immediately — you'll need them at key moments.",
+      "Draw tickets mid-game only if you're clearly ahead on routes; late-game incomplete tickets are deadly.",
+      "Use the bank at 4:1 as a last resort; ports (2:1 or 3:1) are the real force multipliers if your settlement is nearby."
+    ],
+    "image_path": "data/images/ticket-to-ride.jpg"
+  },
+  {
+    "id": "pandemic",
+    "title": "Pandemic",
+    "weight": "medium",
+    "bgg_weight": 2.4,
+    "min_players": 2,
+    "max_players": 4,
+    "play_time": "45–75 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Pandemic",
+    "mechanics": [
+      "cooperative",
+      "hand management",
+      "point-to-point movement"
+    ],
+    "description": "Four deadly diseases are spreading across the globe. A team of specialists races to contain outbreaks and discover cures before humanity falls. Every decision is shared, every mistake felt by all — the world wins or loses together.",
+    "theme": "The world is ravaged by four deadly diseases. You are a team of elite specialists — scientists, medics, researchers — who must collaborate across continents to cure all four diseases before outbreaks cascade out of control or the world runs out of time.",
+    "objective": "The team wins by discovering cures for all 4 diseases. The team loses if 8 outbreaks occur, any disease cube color runs out, or the player draw pile is exhausted when a player must draw.",
+    "setup": [
+      "Place the board. Build a Research Station in Atlanta and place a player figure there.",
+      "Shuffle the Infection deck and draw 9 cards: place 3 cubes on the first 3 cities, 2 cubes on the next 3, and 1 cube on the last 3.",
+      "Shuffle Role cards and deal one to each player; give starting hands based on player count (4p→2 cards, 3p→3, 2p→4).",
+      "Shuffle Epidemic cards into the Player deck (4 for Standard, 5 for Heroic, 6 for Legendary difficulty).",
+      "Set outbreak and infection rate markers to their starting positions."
+    ],
+    "round_structure": [
+      "**Step 1 — Actions**: Take exactly 4 actions in any order and combination.",
+      "**Step 2 — Draw**: Draw 2 cards from the Player deck. If an Epidemic card is drawn: increase infection rate, infect the bottom city of the Infection deck with 3 cubes, then shuffle all Infection discard cards back on top.",
+      "**Step 3 — Infect**: Draw Infection cards equal to the current infection rate; place 1 cube on each drawn city (adding a 4th cube triggers an Outbreak instead)."
+    ],
+    "main_actions": [
+      "**Drive/Ferry**: Move to a city connected by a line on the board.",
+      "**Direct Flight**: Discard a city card to fly to that city from anywhere.",
+      "**Charter Flight**: Discard the card matching your current city to fly to any city.",
+      "**Shuttle Flight**: Move between any two cities that each have a Research Station.",
+      "**Build Research Station**: Discard the card matching your current city to build a station there.",
+      "**Treat Disease**: Remove 1 disease cube from your city (or ALL cubes if that disease is cured).",
+      "**Share Knowledge**: Give or take a city card from another player in the same city (card must match that city).",
+      "**Discover a Cure**: At a Research Station, discard 5 cards of the same color to cure that disease."
+    ],
+    "end_game_condition": "**Win**: All 4 diseases are cured (cubes may still be on the board).\n**Lose (any one of three)**:\n- 8 outbreaks have occurred.\n- Any color's disease cube supply runs out.\n- A player cannot draw 2 cards because the Player deck is empty.",
+    "quiz": [
+      {
+        "question": "How does a player discover a cure for a disease?",
+        "options": [
+          "Remove all cubes of that color from the board",
+          "Discard 5 cards of the same color while at a Research Station",
+          "Use the Scientist's special ability from any location",
+          "Draw a 'Cure Found' event card"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "What triggers an Outbreak?",
+        "options": [
+          "Drawing four Epidemic cards",
+          "Adding a disease cube to a city that already has 3 cubes of that color",
+          "When a player skips their turn",
+          "When the infection rate reaches its maximum"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "How many actions does each player take on their turn?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "When an Epidemic card is drawn, what happens in order?",
+        "options": [
+          "All cities receive 1 additional cube of any color",
+          "Infect the bottom city of the Infection deck with 3 cubes, then shuffle the discard pile back on top",
+          "The current player loses all remaining actions",
+          "Draw 3 extra Player cards as compensation"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The team immediately wins Pandemic when:",
+        "options": [
+          "All disease cubes are removed from the board",
+          "All 4 diseases have been cured (eradication not required)",
+          "The infection rate drops to zero",
+          "The last Epidemic card is drawn without triggering a loss"
+        ],
+        "answer_index": 1
+      }
+    ],
+    "teaching_tips": [
+      "State the three lose conditions clearly before the first card is drawn — new players are often shocked that a depleted Player deck is a loss.",
+      "Walk through an Epidemic card step-by-step before one appears in play, not during the crisis, so players are prepared.",
+      "Encourage open communication: Pandemic rewards collective planning, not individual heroics. Remind players to announce their plans before acting.",
+      "Distinguish treating vs. curing early: treating removes cubes one at a time; curing changes the treatment rule so all cubes vanish with one action."
+    ],
+    "strategy_tips": [
+      "Always have a path toward the cure for the disease with the most cubes on the board — falling behind on one disease creates a cascading lose spiral.",
+      "Never let any highly connected city reach 3 cubes — a chain outbreak can lose the game in one infection phase.",
+      "Build research stations in the most outbreak-prone continent early; the Shuttle Flight action is one of the most powerful in the game.",
+      "Use the Medic aggressively: they remove all cubes with one action and auto-treat cured diseases — they should almost always be positioned at the worst hotspot."
+    ],
+    "image_path": "data/images/pandemic.jpg"
+  },
+  {
+    "id": "catan",
+    "title": "Catan",
+    "weight": "medium",
+    "bgg_weight": 2.3,
+    "min_players": 3,
+    "max_players": 4,
+    "play_time": "60–120 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Catan",
+    "mechanics": [
+      "resource management",
+      "trading",
+      "dice rolling"
+    ],
+    "description": "Settlers compete to colonize the island of Catan — harvesting lumber, brick, grain, wool, and ore, trading with rivals, and racing to build the settlements and cities that will carry them to 10 Victory Points first.",
+    "theme": "You are a settler on the newly discovered island of Catan. Gather resources from the land, negotiate with competing settlers, and develop your civilization through roads, settlements, and cities. The island is finite — every hex is contested real estate.",
+    "objective": "First player to reach 10 Victory Points on their turn wins. VPs come from settlements (1 VP each), cities (2 VP each), development cards, Longest Road (2 VP), and Largest Army (2 VP).",
+    "setup": [
+      "Randomly arrange the 19 terrain hexes (desert, forest, pasture, fields, hills, mountains) to form the island.",
+      "Assign number tokens (2–12, no 7) to each non-desert hex following the alphabetical spiral pattern.",
+      "Place ports around the coast in designated spots.",
+      "In reverse snake-draft order, each player places 2 settlements and 2 roads. After the draft, each player collects 1 resource for each hex adjacent to their second settlement."
+    ],
+    "round_structure": [
+      "**Step 1 — Roll**: Roll both dice. All players collect 1 resource from each settlement (or 2 from each city) adjacent to hexes matching that number.",
+      "**Special — 7 Rolled**: No resources produced. Active player moves the Robber to any hex (blocking that number). Any player with 8+ cards discards half (rounded down). Active player steals 1 card from a player adjacent to the Robber's new hex.",
+      "**Step 2 — Trade**: Active player may trade with the bank (4:1 default, or 3:1/2:1 at ports) or negotiate freely with other players.",
+      "**Step 3 — Build**: Spend resources to build roads, settlements, cities, or buy development cards (as many as you can afford)."
+    ],
+    "main_actions": [
+      "**Build Road** (1 Lumber + 1 Brick): Place on any empty road space connected to your network.",
+      "**Build Settlement** (1 Lumber + 1 Brick + 1 Grain + 1 Wool): Place at an intersection connected to your road, following the distance rule.",
+      "**Upgrade to City** (2 Grain + 3 Ore): Replace one of your settlements with a city (doubles resource production).",
+      "**Buy Development Card** (1 Ore + 1 Grain + 1 Wool): Draw blindly from the dev card deck (Knights, Progress cards, VP cards).",
+      "**Trade**: Exchange with bank at 4:1 (or better at ports), or offer any deal to other players."
+    ],
+    "end_game_condition": "When any player reaches **10 Victory Points on their turn** (including hidden VP cards they now reveal), the game ends immediately. That player wins. Points can include: settlements (1 VP), cities (2 VP), Longest Road (2 VP), Largest Army (2 VP), and VP development cards.",
+    "quiz": [
+      {
+        "question": "What happens when a 7 is rolled?",
+        "options": [
+          "All players collect 1 ore from the mountain hexes",
+          "The active player moves the Robber; players with 8+ cards discard half",
+          "All players discard their most expensive resource",
+          "The active player steals 1 card from every opponent"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "How many Victory Points are needed to win Catan?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "12"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "What resources are required to build a City?",
+        "options": [
+          "1 Lumber + 1 Brick + 1 Grain + 1 Wool",
+          "2 Grain + 3 Ore",
+          "3 Ore + 2 Wool",
+          "2 Lumber + 2 Ore + 1 Grain"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The Longest Road bonus card is worth how many Victory Points?",
+        "options": [
+          "1 VP",
+          "2 VP",
+          "3 VP",
+          "4 VP"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The distance rule requires new settlements to be placed:",
+        "options": [
+          "Adjacent intersections are allowed as long as they're yours",
+          "At least 2 road segments away from any existing settlement",
+          "Exactly 3 roads away from all settlements",
+          "At least 4 road segments from opponents' settlements only"
+        ],
+        "answer_index": 1
+      }
+    ],
+    "teaching_tips": [
+      "Before setup, demonstrate how intersection placement works — show players a spot that touches 3 hexes vs. one that touches only 1, so they understand why initial placement is the highest-stakes decision.",
+      "Explain the distance rule before anyone places — illegal placements discovered mid-game are demoralizing.",
+      "Introduce trading as the social core of the game: anyone can offer a deal on anyone's turn; this drives the table energy.",
+      "Clarify that development cards are secret (except Victory Points, which are revealed only when they win you the game)."
+    ],
+    "strategy_tips": [
+      "Prioritize ore and grain early — cities double your income and are the fastest acceleration to 10 VP.",
+      "A 2:1 ore port is extremely powerful: it effectively doubles the value of every ore-adjacent hex you have.",
+      "Trading is a lever: give resources to the player in second place to slow the leader, not to the leader who already doesn't need them.",
+      "Buy a few development cards early to compete for Largest Army (2 VP) — Knights also protect your settlements from the Robber."
+    ],
+    "image_path": "data/images/catan.jpg"
+  },
+  {
+    "id": "terraforming-mars",
+    "title": "Terraforming Mars",
+    "weight": "heavy",
+    "bgg_weight": 3.2,
+    "min_players": 1,
+    "max_players": 5,
+    "play_time": "120–180 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Terraforming+Mars",
+    "mechanics": [
+      "engine building",
+      "hand management",
+      "resource management"
+    ],
+    "description": "Corporations backed by the World Government compete to terraform Mars — raising temperature, oxygen, and ocean levels — while constructing cities, forests, and ecosystems. Every card played reshapes the planet and your engine for future generations.",
+    "theme": "It's the 24th century. Corporations backed by Earth's World Government race to make Mars habitable by raising its temperature, releasing oxygen, and flooding its oceans. You represent one such corporation — every project card you play leaves a permanent mark on the red planet.",
+    "objective": "Score the most points at the end of the final generation. Points come from Terraform Rating (TR), Victory Points on project cards, tile placements, claimed milestones, and funded awards.",
+    "setup": [
+      "Set all three global parameter tracks to their starting values: Temperature −30°C, Oxygen 0%, Ocean tiles 0.",
+      "Each player receives 2 corporation cards (keep 1) and 10 project cards (buy any for 3 MC each, discard the rest).",
+      "Set each player's Terraform Rating to 20 and collect starting resources from your chosen corporation.",
+      "Place the player boards, resource cubes, and set the TR markers on the main board."
+    ],
+    "round_structure": [
+      "**Research Phase**: Draw 4 project cards. Buy any you want for 3 MC each; discard the rest.",
+      "**Action Phase**: Players alternate taking 1 or 2 actions each turn until all players have passed. Any action can be taken in any order.",
+      "**Production Phase**: All resource tracks produce: MegaCredits = your TR + MC production; all other resource tracks produce their values."
+    ],
+    "main_actions": [
+      "**Play a project card**: Pay the card's cost in MC (or specified resources), meet any requirements, and apply its effects.",
+      "**Standard Projects**: Sell patents (1 MC per card), Power Plant (+1 energy production), Asteroid (+1 temperature), Aquifer (place an ocean tile), Greenery (place a greenery tile, +1 O2), City (place a city tile).",
+      "**Use a card action**: Activate the action icon on an in-play blue card (once per generation per card).",
+      "**Convert 8 Plants → Greenery tile**: Place a greenery tile (+1 O2, +1 TR, adjacency bonuses).",
+      "**Convert 8 Heat → +1 Temperature**: Raise temperature by 1 step (+1 TR).",
+      "**Claim a Milestone** (8 MC): Claim one of the 5 milestones if you meet its requirement (3 VP each at game end, max 3 milestones).",
+      "**Fund an Award** (8/14/20 MC): Fund one of the 5 awards (top scorer in that category gets 5 VP, second gets 2 VP at game end)."
+    ],
+    "end_game_condition": "When all three global parameters are maxed — Temperature reaches **+8°C**, Oxygen reaches **14%**, and **9 Ocean tiles** are placed — finish the current generation. Then score: TR + card VPs + tile adjacency VPs + milestones + awards. Highest score wins.",
+    "quiz": [
+      {
+        "question": "When does a game of Terraforming Mars end?",
+        "options": [
+          "When one player runs out of project cards to buy",
+          "When all three global parameters are maxed, at the end of that generation",
+          "After exactly 14 generations regardless of global parameters",
+          "When any player reaches 50 Terraform Rating"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "What does Terraform Rating (TR) represent?",
+        "options": [
+          "The number of project cards you have played",
+          "Both your income bonus per generation (in MC) and your VP score at game end",
+          "Your ranking relative to other players",
+          "The total MegaCredits you have spent"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "During the Research Phase, each project card you choose to buy costs:",
+        "options": [
+          "1 MegaCredit",
+          "2 MegaCredits",
+          "3 MegaCredits",
+          "5 MegaCredits"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "How many plants must you convert to place a Greenery tile?",
+        "options": [
+          "5",
+          "6",
+          "8",
+          "10"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "Each time you raise a global parameter by one step, your Terraform Rating:",
+        "options": [
+          "Doubles for that generation only",
+          "Increases by 1, permanently adding 1 MC to your generation income",
+          "Stays the same until final scoring",
+          "Decreases by 1 to represent resource cost"
+        ],
+        "answer_index": 1
+      }
+    ],
+    "teaching_tips": [
+      "Spend 10 minutes explaining the three global parameters and how TR connects to income before anyone looks at cards — this is the central insight of the game.",
+      "For a first game, use the Beginner Corporation (free starting cards, simplified starting resources) so players can focus on learning the card economy.",
+      "Explain the Action Phase rhythm carefully: players alternate single actions (not full turns) until everyone passes — new players often expect a traditional turn structure.",
+      "Point to the milestones/awards board at the start and explain they reward different play styles — late-game discovery of a milestone you're losing means 3 VP lost forever."
+    ],
+    "strategy_tips": [
+      "Engine before TR: spend your first 2–3 generations building production tracks, not rushing to raise parameters — a strong engine compounds every generation thereafter.",
+      "Don't ignore heat: 8 heat = +1 TR = +1 MC income every generation for the rest of the game; it adds up across a long game.",
+      "Claim milestones early when requirements are low; as the game progresses, other players will meet them too and you lose the race.",
+      "Awards are about relative ranking, not absolute scores — fund an award you're currently winning and you deny others the 5 VP even if you slip behind."
+    ],
+    "image_path": "data/images/terraforming-mars.jpg"
+  },
+  {
+    "id": "gloomhaven",
+    "title": "Gloomhaven",
+    "weight": "heavy",
+    "bgg_weight": 3.9,
+    "min_players": 1,
+    "max_players": 4,
+    "play_time": "60–120 min per scenario",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Gloomhaven",
+    "mechanics": [
+      "campaign",
+      "hand management",
+      "dungeon crawling"
+    ],
+    "description": "Mercenaries explore a dark fantasy world across a branching campaign of interconnected scenarios. Your ability cards are your HP, your actions, and your lifespan — manage them wisely, or be exhausted before the final room is cleared.",
+    "theme": "You are mercenaries in the grim city of Gloomhaven, venturing into dungeons for gold, glory, and the pursuit of personal quests. The world changes based on your choices: towns evolve, scenarios unlock, and characters can permanently retire once their story is complete.",
+    "objective": "Complete each scenario's specific objective (defeat a boss, escape, protect an item, etc.). Long-term: retire characters by completing personal quests, unlock new characters and locations, and advance the branching campaign narrative.",
+    "setup": [
+      "Set up the scenario-specific dungeon tiles as shown in the scenario book.",
+      "Each player chooses their character and shuffles their ability card deck (hand size varies by class).",
+      "Shuffle monster ability decks for each monster type present; shuffle the attack modifier decks for players and each monster type.",
+      "Place monster standees, starting tokens, and overlay tiles as specified in the scenario."
+    ],
+    "round_structure": [
+      "**Card Selection**: Each player secretly selects 2 ability cards from their hand to play this round.",
+      "**Reveal**: All players reveal simultaneously. Each monster type draws an ability card. Initiative is set by the top card of each player's chosen pair.",
+      "**Resolution**: All figures act in ascending initiative order. Players choose which ability (top of card 1 or top of card 2, bottom of the other) to use for move and attack.",
+      "**End of Round**: Discard all played cards (or optionally lose them for their powerful bottom abilities). Refresh elements; apply poison/wound if relevant."
+    ],
+    "main_actions": [
+      "**Move**: Move up to X hexes in any direction (adjacency required).",
+      "**Attack**: Deal base damage (modified by a drawn attack modifier card) to one target in range.",
+      "**Heal**: Restore HP to yourself or an adjacent ally.",
+      "**Loot**: Pick up any coins or treasure tokens on your current hex.",
+      "**Short Rest**: Randomly discard 1 card from your discard pile and recover the rest to your hand (costs no action but triggers at end of round).",
+      "**Long Rest**: Recover all discarded cards to your hand, heal 2 HP, and refresh all items — but lose your action for the entire round.",
+      "**Special Ability**: Execute any special effect printed on the card (stun, push, create obstacles, summon, etc.)."
+    ],
+    "end_game_condition": "**Win scenario**: Complete the scenario-specific objective before running out of cards.\n**Lose**: All characters become Exhausted — having no cards in hand AND no discards to rest with.\n**Campaign**: Progresses through a branching tree of ~95 scenarios; the meta-campaign concludes when the final story scenario is completed.",
+    "quiz": [
+      {
+        "question": "How is initiative order determined each round in Gloomhaven?",
+        "options": [
+          "Players roll a die to determine order",
+          "By the initiative value printed on the top card of each player's chosen pair",
+          "Monsters always act before all players",
+          "The player with the lowest current HP goes first"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "A character becomes Exhausted when:",
+        "options": [
+          "They lose all hit points",
+          "They have no cards remaining in hand AND no cards in discard to rest with",
+          "They use a Long Rest action",
+          "They lose 3 or more items in one round"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "During the Card Selection phase, each player secretly chooses:",
+        "options": [
+          "1 ability card",
+          "2 ability cards",
+          "3 ability cards",
+          "As many as they want"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The key difference between Short Rest and Long Rest is:",
+        "options": [
+          "Short Rest heals more HP than Long Rest",
+          "Short Rest randomly discards 1 card and recovers the rest; Long Rest recovers all discards, heals 2 HP, refreshes items — but costs your full turn",
+          "Long Rest can only be used once per scenario",
+          "There is no meaningful difference between them"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The attack modifier deck affects:",
+        "options": [
+          "The number of hexes you may move each turn",
+          "Each attack's damage through drawn modifiers that add bonuses, penalties, or special effects",
+          "Your maximum hand size for the round",
+          "The initiative order for that round"
+        ],
+        "answer_index": 1
+      }
+    ],
+    "teaching_tips": [
+      "Play the tutorial scenario (Black Barrow) for the very first session — it introduces mechanics gradually and avoids overwhelming new players.",
+      "Explain the Hand Economy concept before dealing cards: your hand is both your action resource and your effective HP — running out of cards is as fatal as running out of health.",
+      "Warn players about spending Loss cards (the red icons) too early — save those for bosses or the final room, not trash enemies in room one.",
+      "Card selection is secret and simultaneous — encourage players to communicate strategy openly during Card Selection, not to surprise each other."
+    ],
+    "strategy_tips": [
+      "Conserve Loss cards ruthlessly: use standard abilities for the first rooms and hold your most powerful Loss cards for the final encounter.",
+      "Focus fire on one monster at a time — dead monsters deal no damage; wounded monsters at 1 HP are still fully functional.",
+      "Learn monster target priority: they attack the lowest-initiative valid target — use this to bait dangerous enemies into choosing predictable targets.",
+      "Coordinate elemental creation and consumption within the same round by ordering your cards carefully — free bonus damage is the fastest path to clearing rooms."
+    ],
+    "image_path": "data/images/gloomhaven.jpg"
+  }
+]
