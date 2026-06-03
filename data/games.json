@@ -619,5 +619,313 @@
       "Coordinate elemental creation and consumption within the same round by ordering your cards carefully — free bonus damage is the fastest path to clearing rooms."
     ],
     "image_path": "data/images/gloomhaven.jpg"
+  },
+  {
+    "id": "moody-bear-kingdom",
+    "title": "Moody Bear Kingdom",
+    "weight": "light",
+    "bgg_weight": 1.6,
+    "min_players": 2,
+    "max_players": 5,
+    "play_time": "30–45 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Moody+Bear+Kingdom",
+    "image_path": "data/images/moody-bear-kingdom.jpg",
+    "mechanics": [
+      "hand management",
+      "set collection",
+      "player interaction"
+    ],
+    "description": "Bear nobles compete to win the favor of their kingdom's citizens by managing their subjects' ever-shifting emotions. Draw mood cards, soothe grumpy bears, and cultivate the most content court to be crowned the kingdom's most beloved noble.",
+    "theme": "You are a bear noble in a whimsical kingdom where every citizen's mood is in constant flux. Honey reserves are running low, the meadow blooms are wilting, and the royal Festival is coming — whoever keeps their subjects happiest when the Festival Bell rings wins the crown.",
+    "objective": "Score the most Happiness Points at the end of 3 seasons. Points come from matching mood sets in your court, fulfilling Royal Decree bonus objectives, and the Happy Bear bonus awarded to the player whose court is most content at season's end.",
+    "setup": [
+      "Shuffle the 60-card Mood Deck and deal 5 cards to each player.",
+      "Place 3 Royal Decree cards face-up in the center — these are the current season's bonus objectives.",
+      "Give each player a Kingdom Board and 3 Soothing Honey tokens.",
+      "Set the Season Marker to Season 1. The player who most recently ate honey goes first."
+    ],
+    "round_structure": [
+      "**Draw Phase**: Each player draws 2 Mood Cards from the deck or claims 1 card from the face-up display row.",
+      "**Play Phase**: In clockwise order, each player plays 1–3 cards to shift the moods of their bear subjects or play event cards affecting rivals.",
+      "**Festival Phase**: All players simultaneously reveal their courts and score Happiness Points based on mood sets, fulfilled Royal Decrees, and the Happy Bear bonus.",
+      "**End of Season**: Discard all played cards and advance the Season Marker. After Season 3, proceed to final scoring."
+    ],
+    "main_actions": [
+      "**Soothe** (Honey token): Spend 1 Honey token to convert a Grumpy bear in your court to Content (+1 Happiness Point at scoring).",
+      "**Inspire** (Event card): Play an Inspire event to elevate any bear in your court to Joyful status for this season (+2 Happiness Points).",
+      "**Steal Joy** (Mischief card): Play a Mischief card to swap one of your Grumpy bears with an opponent's Joyful bear.",
+      "**Royal Decree**: Fulfill the stated conditions on any face-up Decree card (e.g., 3 Content bears of different types) to claim it and its bonus points.",
+      "**Pass**: Forgo your Play Phase action to draw 1 extra Mood Card instead."
+    ],
+    "end_game_condition": "After 3 complete Seasons, tally all Happiness Points from each player's bear court, claimed Royal Decree cards, and any Honey token bonuses remaining. The noble with the most Happiness Points is crowned the kingdom's most beloved and wins the game. Ties are broken by number of Royal Decrees fulfilled.",
+    "quiz": [
+      {
+        "question": "How many Mood Cards are dealt to each player at the start of a game?",
+        "options": [
+          "3 cards",
+          "4 cards",
+          "5 cards",
+          "7 cards"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "What does spending a Soothing Honey token allow you to do?",
+        "options": [
+          "Draw 2 extra Mood Cards",
+          "Convert a Grumpy bear in your court to Content",
+          "Block an opponent's Play Phase action",
+          "Claim any Royal Decree without meeting its conditions"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "How many seasons does a full game of Moody Bear Kingdom last?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The Steal Joy action allows a player to:",
+        "options": [
+          "Gain 2 bonus Happiness Points immediately",
+          "Draw from the top of the discard pile",
+          "Swap a Grumpy bear from their court with an opponent's Joyful bear",
+          "Claim any Royal Decree without meeting its conditions"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "How many Royal Decree cards are face-up in the center at any time during a season?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "answer_index": 2
+      }
+    ],
+    "teaching_tips": [
+      "Begin by showing the three mood states (Grumpy, Content, Joyful) and how Happiness Points scale with them — this progression drives every decision in the game.",
+      "Walk through an active Royal Decree card before play starts; new players often overlook these bonus objectives until it's too late to compete for them.",
+      "Remind players that Mischief cards (Steal Joy) can swing momentum dramatically — encourage beginners to hold one in reserve rather than playing it immediately.",
+      "For a friendlier first game, remove all Mischief cards from the deck; it eliminates confrontation and lets players focus on building their own courts."
+    ],
+    "strategy_tips": [
+      "Prioritize Joyful bears early — they score double the Happiness Points of Content bears and are your primary point engine across all 3 seasons.",
+      "Royal Decrees often reward set collection (e.g., '3 Content bears of different types') — plan your court composition around whichever Decrees are currently face-up.",
+      "Track opponents' Honey token counts; a player with no Honey cannot soothe Grumpy bears and becomes predictable, making them a prime Mischief target.",
+      "Save Mischief cards for the Festival Phase reveal — blindsiding a leader by swapping their Joyful bear just before scoring can flip the entire season result."
+    ]
+  },
+  {
+    "id": "lunar-creamery",
+    "title": "Lunar Creamery",
+    "weight": "light",
+    "bgg_weight": 1.4,
+    "min_players": 2,
+    "max_players": 4,
+    "play_time": "20–40 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Lunar+Creamery",
+    "image_path": "data/images/lunar-creamery.jpg",
+    "mechanics": [
+      "worker placement",
+      "resource management",
+      "hand management"
+    ],
+    "description": "Set up shop on the lunar surface and serve the moon's most discerning dessert customers. Harvest exotic moon-milk from crater herds, collect stardust flavors, and craft the perfect scoop before rivals claim your ingredients — then wait for the Moonrise Festival to crown the Best Scoop.",
+    "theme": "The year is 2185. A bustling lunar colony has developed an insatiable craving for artisan ice cream made with authentic lunar ingredients. You are one of several eager creamery owners racing to master the most beloved scoops before the annual Moonrise Festival awards its coveted Best Scoop trophy.",
+    "objective": "Score the most Flavor Points by serving ice cream orders, completing flavor collections, and earning Rare Flavor bonuses. The creamery with the most Flavor Points when the Festival Card is revealed wins the Best Scoop trophy.",
+    "setup": [
+      "Place the Lunar Surface board in the center. Shuffle and place Ingredient tiles face-down across the crater spaces.",
+      "Deal 3 Order cards to each player; each player keeps 2 and returns 1 face-down to the bottom of the deck.",
+      "Give each player a Creamery Board, 3 Serving Cone workers, and starting ingredients: 2 Moon-Milk and 1 Stardust.",
+      "Shuffle the Festival Card into the bottom third of the Order deck. The youngest player goes first."
+    ],
+    "round_structure": [
+      "**Harvest Phase**: Each player places 1 Serving Cone worker on any unclaimed crater space to collect its Ingredient tile.",
+      "**Craft Phase**: Players spend ingredients from their Creamery Board to complete Order cards. Completed orders score Flavor Points immediately.",
+      "**Restock Phase**: Each player draws 1 new Order card from the deck, then retrieves all Serving Cone workers back to their Creamery Board."
+    ],
+    "main_actions": [
+      "**Harvest**: Place a Serving Cone on an unclaimed crater to claim its Ingredient tile and add it to your Creamery Board.",
+      "**Craft a Scoop**: Spend the ingredients listed on an Order card to complete it; score its printed Flavor Points immediately.",
+      "**Flavor Fusion**: Discard 3 matching Ingredient tiles to create a Rare Flavor token worth 3 Flavor Points at game end.",
+      "**Trade**: Exchange 2 Ingredient tiles of any types with another willing player (both must agree).",
+      "**Special Order**: Draw 2 Order cards and keep 1, discarding the other face-down (your hand may temporarily exceed 3 during this action)."
+    ],
+    "end_game_condition": "When the Festival Card is revealed from the Order deck, finish the current round. All players then reveal any Rare Flavor tokens and add their point values. The creamery with the most total Flavor Points wins the Best Scoop trophy and the game. Ties are broken by number of completed Order cards.",
+    "quiz": [
+      {
+        "question": "Where is the Festival Card placed in the Order deck at setup?",
+        "options": [
+          "On top of the deck",
+          "At the very bottom",
+          "Shuffled into the bottom third",
+          "Set aside until the last player passes"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "What does the Flavor Fusion action require?",
+        "options": [
+          "2 matching ingredients and 1 Stardust",
+          "3 matching Ingredient tiles",
+          "5 tiles of any type",
+          "A completed Order card"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "During the Harvest Phase, how many Serving Cone workers does each player deploy?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "As many as they have available"
+        ],
+        "answer_index": 0
+      },
+      {
+        "question": "What starting ingredients does each player receive?",
+        "options": [
+          "3 Moon-Milk and 2 Stardust",
+          "1 Moon-Milk and 3 Stardust",
+          "2 Moon-Milk and 1 Stardust",
+          "2 of every ingredient type"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "The game ends when:",
+        "options": [
+          "A player scores 20 Flavor Points",
+          "All Ingredient tiles are claimed from the board",
+          "The Festival Card is revealed from the Order deck",
+          "Any player completes 5 Order cards"
+        ],
+        "answer_index": 2
+      }
+    ],
+    "teaching_tips": [
+      "Show the Festival Card's placement before the game starts — players who don't realize it's in the bottom third are often blindsided by the sudden end trigger.",
+      "Explain Rare Flavor tokens during setup: many beginners ignore Flavor Fusion until it's too late, but 3-point tokens are often the deciding tiebreaker.",
+      "Point out that craters are contested on a first-come, first-served basis each round; planning your Harvest a turn ahead is the core skill of Lunar Creamery.",
+      "For a first session, flip all Ingredient tiles face-up at setup so players can plan harvests openly; remove this assist once the group is comfortable."
+    ],
+    "strategy_tips": [
+      "Prioritize Order cards with high Flavor Point rewards that share ingredients — completing two overlapping orders from the same harvest run is the fastest point engine.",
+      "Reserve at least one Serving Cone each round to contest a crater your opponents clearly want; blocking key ingredients can be worth more than a free harvest.",
+      "Watch opponents' Creamery Boards after each Craft Phase — if someone is one ingredient away from a high-value order, cut off their supply before they can complete it.",
+      "Build toward at least 2 Rare Flavor tokens; their cumulative 6 points frequently determine the winner when a close game ends suddenly on the Festival Card reveal."
+    ]
+  },
+  {
+    "id": "moon-leap",
+    "title": "Moon Leap",
+    "weight": "light",
+    "bgg_weight": 1.7,
+    "min_players": 2,
+    "max_players": 4,
+    "play_time": "20–35 min",
+    "image_url": "https://placehold.co/400x280/16213e/c9a227?text=Moon+Leap",
+    "image_path": "data/images/moon-leap.jpg",
+    "mechanics": [
+      "hand management",
+      "racing",
+      "grid movement"
+    ],
+    "description": "Strap on your gravity boots and leap across the moon's crater-riddled surface. Play movement cards to bound between platforms, chain leaps for bonus distance, and race to the far side before rivals. One wrong landing and you'll be spinning helplessly in low gravity for two whole turns.",
+    "theme": "A group of young lunar explorers has turned the moon's surface into a giant playground. Using experimental gravity boots, you race from the launch pad on the near side to the observation tower on the far side. The moon's low gravity lets you leap incredible distances — but every platform is slippery, and a missed landing sends you tumbling into the void.",
+    "objective": "Be the first Explorer to reach the Observation Tower at platform 12. Landing on special platform tiles grants bonuses; falling into Crater Traps costs turns. Race smart — not just fast.",
+    "setup": [
+      "Shuffle and lay out 12 Platform tiles in a straight line from Start (position 0) to the Observation Tower (position 12).",
+      "Place each player's Explorer token on the Start platform.",
+      "Shuffle the 40-card Leap Deck and deal 4 cards to each player.",
+      "Place Hazard tokens on any Platform tile showing a Crater icon (determined by the tile's face-up symbol)."
+    ],
+    "round_structure": [
+      "**Play Phase**: In clockwise order, each player plays 1 Leap Card (or uses a special action) and moves their Explorer forward the indicated number of platforms.",
+      "**Landing Phase**: Resolve any special effect on the platform you land on: Boost Pad (advance 1 free platform), Crater Trap (skip next turn, return 2 spaces), or Springboard (draw 1 bonus card).",
+      "**Draw Phase**: Draw 1 card from the Leap Deck. If you chained 2 Leap Cards this round, draw 2 cards instead.",
+      "**Check for Winner**: If any Explorer lands on or passes platform 12, the game ends immediately and that Explorer wins."
+    ],
+    "main_actions": [
+      "**Single Leap**: Play 1 Leap Card (value 1–4) to move that many platforms forward.",
+      "**Chain Leap**: Play 2 Leap Cards in the same turn, adding their values together and gaining +1 bonus platform movement.",
+      "**Boost Pad** (landing effect): Automatically advance 1 extra platform for free when you land on this tile.",
+      "**Crater Trap** (landing effect): Your Explorer is knocked into the void — skip your next full turn and move back 2 platforms.",
+      "**Power Slide** (special action): Discard any 3 cards from your hand to leap directly to any platform within 6 spaces, bypassing all hazards."
+    ],
+    "end_game_condition": "The first Explorer to land on or pass the Observation Tower (platform 12) wins immediately — no tiebreaker needed. If the Leap Deck is exhausted before anyone wins, shuffle the discard pile to form a new deck and continue play without interruption.",
+    "quiz": [
+      {
+        "question": "How many Leap Cards are dealt to each player at the start of Moon Leap?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "What happens when an Explorer lands on a Crater Trap?",
+        "options": [
+          "Draw 2 penalty cards",
+          "Move back 1 space only",
+          "Skip your next turn and return to 2 platforms back",
+          "Discard your entire hand"
+        ],
+        "answer_index": 2
+      },
+      {
+        "question": "The Chain Leap action rewards players with:",
+        "options": [
+          "1 extra card draw only",
+          "+1 bonus platform movement (on top of the two cards' combined values)",
+          "A free Power Slide on the same turn",
+          "Both an extra draw and a bonus platform movement"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "The Power Slide special action requires:",
+        "options": [
+          "Landing on a Boost Pad on the previous turn",
+          "Discarding any 3 cards to leap up to 6 platforms, bypassing all hazards",
+          "Spending 2 cards to leap over a single hazard",
+          "Playing a Leap Card with a value of 4 or higher"
+        ],
+        "answer_index": 1
+      },
+      {
+        "question": "How many Platform tiles make up the Lunar Track?",
+        "options": [
+          "8",
+          "10",
+          "12",
+          "15"
+        ],
+        "answer_index": 2
+      }
+    ],
+    "teaching_tips": [
+      "Walk through the Platform tile types before laying them out: new players often forget Crater Traps exist until the first Explorer falls in, which can feel unfair if undisclosed.",
+      "Demonstrate a Chain Leap in round 1 using an example player — the +1 bonus movement incentive is the core tactical decision and players need to see it in action.",
+      "Remind players that Power Slide bypasses all hazards (not just Craters); it's a strong emergency move that beginners tend to hoard until it's too late to use effectively.",
+      "For younger or newer players, remove all Crater Trap tiles for the first game — it keeps the experience fast and positive while teaching the movement mechanics cleanly."
+    ],
+    "strategy_tips": [
+      "Save Chain Leaps for moments when the combined movement lands you on a Boost Pad — chaining into a boost can produce a 3-platform swing in a single turn.",
+      "Count opponents' hand sizes: a player holding 1–2 cards has limited options; that's the moment to build a lead they can't close before their next draw.",
+      "Don't Power Slide early — wait until you need to bypass a cluster of Crater Traps that your current hand values cannot safely navigate.",
+      "Landing on Boost Pads repeatedly compounds faster than any other strategy; plan your Leap Card values across multiple turns to consistently target them."
+    ]
   }
 ]
