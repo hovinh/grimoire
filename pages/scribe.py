@@ -63,8 +63,16 @@ def _init_defaults() -> None:
         "sc_main_actions": [""],
         "sc_end_game_condition": "",
         "sc_quiz": [empty_question() for _ in range(5)],
+        "sc_card_effects": [""],
+        "sc_combo_cards": [""],
+        "sc_scoring": [""],
         "sc_teaching_tips": [""],
         "sc_strategy_tips": [""],
+        "sc_adv_name": "",
+        "sc_adv_summary": "",
+        "sc_adv_locking": "",
+        "sc_adv_unlocking": "",
+        "sc_adv_details": "",
         "sc_image_path": "",
         "sc_image_url": "",
         "sc_uploaded_img": None,
@@ -89,8 +97,16 @@ def _init_from_game(game: dict) -> None:
         "sc_main_actions": game.get("main_actions") or [""],
         "sc_end_game_condition": game.get("end_game_condition") or "",
         "sc_quiz": game.get("quiz") or [empty_question() for _ in range(5)],
+        "sc_card_effects": game.get("card_effects") or [""],
+        "sc_combo_cards": game.get("combo_cards") or [""],
+        "sc_scoring": game.get("scoring") or [""],
         "sc_teaching_tips": game.get("teaching_tips") or [""],
         "sc_strategy_tips": game.get("strategy_tips") or [""],
+        "sc_adv_name": (game.get("advanced_rule") or {}).get("name", ""),
+        "sc_adv_summary": (game.get("advanced_rule") or {}).get("summary", ""),
+        "sc_adv_locking": (game.get("advanced_rule") or {}).get("locking", ""),
+        "sc_adv_unlocking": (game.get("advanced_rule") or {}).get("unlocking", ""),
+        "sc_adv_details": (game.get("advanced_rule") or {}).get("details", ""),
         "sc_image_path": game.get("image_path") or "",
         "sc_image_url": game.get("image_url") or "",
         "sc_uploaded_img": None,
@@ -172,8 +188,8 @@ with col_title:
 st.divider()
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab_basic, tab_rules, tab_quiz, tab_tips = st.tabs(
-    ["📋 Basics", "📖 Rules", "❓ Quiz", "💡 Tips"]
+tab_basic, tab_rules, tab_quiz, tab_tips, tab_advanced = st.tabs(
+    ["📋 Basics", "📖 Rules", "❓ Quiz", "💡 Tips", "🔮 Advanced"]
 )
 
 # ═══ TAB 1 — BASICS ══════════════════════════════════════════════════════════
@@ -267,12 +283,21 @@ with tab_rules:
     st.markdown("**⚡ Main Actions**")
     _list_editor("Action", "sc_main_actions", "**Action name**: description…")
 
+    st.markdown("**🃏 Card Effects** *(optional — for games with individual card reference)*")
+    _list_editor("Card", "sc_card_effects", "**Card Name**: effect description…")
+
+    st.markdown("**🔀 Combo Cards** *(optional — for games with card combinations)*")
+    _list_editor("Combo", "sc_combo_cards", "**Card A + Card B**: effect description…")
+
     st.session_state.sc_end_game_condition = st.text_area(
         "🏁 End Game Condition",
         value=st.session_state.sc_end_game_condition,
         height=100,
         placeholder="When does the game end, and how is the winner determined?",
     )
+
+    st.markdown("**🍦 Scoring** *(optional — for games with end-game scoring breakdown)*")
+    _list_editor("Line", "sc_scoring", "e.g. +3 LP for two matching moon symbols")
 
 # ═══ TAB 3 — QUIZ ════════════════════════════════════════════════════════════
 with tab_quiz:
@@ -317,6 +342,30 @@ with tab_tips:
 
     st.markdown("**♟️ Strategy Tips**")
     _list_editor("Tip", "sc_strategy_tips", "A tip for winning or playing well…")
+
+# ═══ TAB 5 — ADVANCED ════════════════════════════════════════════════════════
+with tab_advanced:
+    st.caption("Optional. Leave blank if this game has no advanced variant rules.")
+    st.session_state.sc_adv_name = st.text_input(
+        "Rule Name", value=st.session_state.sc_adv_name,
+        placeholder="e.g. Lock / Unlock",
+    )
+    st.session_state.sc_adv_summary = st.text_area(
+        "Summary", value=st.session_state.sc_adv_summary, height=80,
+        placeholder="Brief overview of what the advanced rule adds.",
+    )
+    st.session_state.sc_adv_locking = st.text_area(
+        "Locking / Activation", value=st.session_state.sc_adv_locking, height=100,
+        placeholder="How does a player trigger or activate this rule?",
+    )
+    st.session_state.sc_adv_unlocking = st.text_area(
+        "Unlocking / Resolution", value=st.session_state.sc_adv_unlocking, height=100,
+        placeholder="How is the rule resolved or reversed?",
+    )
+    st.session_state.sc_adv_details = st.text_area(
+        "Details", value=st.session_state.sc_adv_details, height=100,
+        placeholder="Any other details for this advanced rule.",
+    )
 
 # ── Save / Cancel ─────────────────────────────────────────────────────────────
 st.divider()
@@ -372,9 +421,19 @@ if save:
         "setup": _read_list("sc_setup"),
         "round_structure": _read_list("sc_round_structure"),
         "main_actions": _read_list("sc_main_actions"),
+        "card_effects": _read_list("sc_card_effects"),
+        "combo_cards": _read_list("sc_combo_cards"),
         "end_game_condition": st.session_state.sc_end_game_condition.strip(),
+        "scoring": _read_list("sc_scoring"),
         "teaching_tips": _read_list("sc_teaching_tips"),
         "strategy_tips": _read_list("sc_strategy_tips"),
+        "advanced_rule": {
+            "name": st.session_state.sc_adv_name.strip(),
+            "summary": st.session_state.sc_adv_summary.strip(),
+            "locking": st.session_state.sc_adv_locking.strip(),
+            "unlocking": st.session_state.sc_adv_unlocking.strip(),
+            "details": st.session_state.sc_adv_details.strip(),
+        } if st.session_state.sc_adv_name.strip() else None,
         "quiz": st.session_state.sc_quiz,
     }
 

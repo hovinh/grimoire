@@ -100,7 +100,27 @@ _render_section("🏆 Objective", game["objective"])
 _render_section("⚙️ Setup", game["setup"])
 _render_section("🔄 Round Structure", game["round_structure"])
 _render_section("⚡ Main Actions", game["main_actions"])
+if game.get("card_effects"):
+    _render_section("🃏 Card Effects", game["card_effects"])
+if game.get("combo_cards"):
+    _render_section("🔀 Combo Cards", game["combo_cards"])
 _render_section("🏁 End Game Condition", game["end_game_condition"])
+
+if game.get("scoring"):
+    _render_section("🍦 Scoring", game["scoring"])
+
+adv = game.get("advanced_rule")
+if adv:
+    st.subheader("🔮 Advanced Rules")
+    st.markdown(f"**{adv['name']}**")
+    st.markdown(adv["summary"])
+    if adv.get("locking"):
+        st.markdown(f"**Locking:** {adv['locking']}")
+    if adv.get("unlocking"):
+        st.markdown(f"**Unlocking:** {adv['unlocking']}")
+    if adv.get("details"):
+        st.markdown(adv["details"])
+    st.markdown("")
 
 st.divider()
 

@@ -59,11 +59,13 @@ grimoire/
 │   └── db.py               # SQLite helpers (init, get, upsert, delete)
 ├── data/
 │   ├── grimoire.db         # SQLite database — commit this with your code
-│   ├── games.json          # Seed data — used only for initial migration
 │   └── images/             # Cover images at 600×450 (4:3 JPEG)
 ├── scripts/
-│   ├── migrate_to_sqlite.py  # One-time: seeds grimoire.db from games.json
-│   └── fetch_images.py       # Downloads and crops cover images from Wikipedia
+│   ├── fetch_images.py               # Downloads and crops cover images from Wikipedia
+│   ├── generate_placeholder_images.py # Generates styled placeholder cover images with PIL
+│   ├── seed_lunar_creamery.py        # Example seed script — Lunar Creamery
+│   ├── seed_moody_bear_kingdom.py    # Example seed script — Moody Bear Kingdom
+│   └── seed_moon_leap.py             # Example seed script — Moon Leap
 ├── .streamlit/
 │   └── config.toml         # Dark theme (gold + navy)
 ├── .local                  # Enables local-only features (gitignored)
@@ -92,25 +94,73 @@ is_local = Path(__file__).parent.joinpath(".local").exists()
 
 All game data lives in `data/grimoire.db` (SQLite). This file is committed to git and deployed with the app.
 
-**Schema:**
-- `games` — one row per game, list fields stored as JSON strings
-- `quiz_questions` — five rows per game, foreign-keyed to `games.id`
-
 The `utils/db.py` module exposes:
 
 ```python
-init_db()           # creates tables if not exist (called on every page load)
+init_db()           # creates tables + migrates missing columns (called on every page load)
 get_all_games()     # returns list of game dicts ordered by weight then title
 get_game(id)        # returns one game dict with quiz, or None
 upsert_game(dict)   # insert or update game + quiz questions
 delete_game(id)     # deletes game and its quiz questions (cascade)
 ```
 
+### Game Schema
+
+**`games` table** — one row per game. List fields are stored as JSON strings.
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | TEXT PK | Snake_case slug, e.g. `lunar_creamery` |
+| `title` | TEXT | Display name |
+| `weight` | TEXT | `light`, `medium`, or `heavy` |
+| `bgg_weight` | REAL | BoardGameGeek complexity (1.0–5.0) |
+| `min_players` | INTEGER | |
+| `max_players` | INTEGER | |
+| `play_time` | TEXT | e.g. `"~46 min"` or `"20–35 min"` |
+| `image_url` | TEXT | Fallback URL if no local image |
+| `image_path` | TEXT | Local path, e.g. `data/images/lunar_creamery.jpg` |
+| `mechanics` | LIST | e.g. `["hand management", "set collection"]` |
+| `description` | TEXT | 2–3 sentence catalog blurb |
+| `theme` | TEXT | Narrative hook — must capture the winning condition |
+| `objective` | TEXT | Win condition in 1–2 sentences |
+| `setup` | LIST | Ordered setup steps |
+| `round_structure` | LIST | Each phase of a round |
+| `main_actions` | LIST | Player actions, use `**Bold**` for action names |
+| `card_effects` | LIST | *(optional)* Individual card reference list |
+| `combo_cards` | LIST | *(optional)* Card combination effects |
+| `end_game_condition` | TEXT | When/how the game ends |
+| `scoring` | LIST | *(optional)* End-game scoring breakdown |
+| `teaching_tips` | LIST | Tips for teaching at the table |
+| `strategy_tips` | LIST | Tips for playing well |
+| `advanced_rule` | JSON | *(optional)* See structure below |
+
+**`quiz_questions` table** — five rows per game, foreign-keyed to `games.id`.
+
+**`advanced_rule` object structure:**
+
+```json
+{
+  "name": "Rule Name",
+  "summary": "One-sentence description of what the rule adds.",
+  "locking": "...",    // optional — use for lock/block mechanics
+  "unlocking": "...",  // optional — use for resolution mechanics
+  "details": "..."     // optional — use for general rule details
+}
+```
+
 ### Adding / Editing Games
 
-Use **The Scribe** from the local app:
+**Via The Scribe (recommended for most edits):**
 - **Add**: click **＋ New Game** on The Codex, or **✍️ The Scribe** in the sidebar
 - **Edit**: open any game's Tome, click **✏️ Edit** in the top-right
+
+**Via seed script (recommended for large content updates):**
+
+Copy an existing script in `scripts/` as a template, fill in the game data, and run it:
+
+```bash
+.venv\Scripts\python scripts/seed_your_game.py
+```
 
 After saving, commit `data/grimoire.db` and push. Streamlit Cloud will redeploy with the updated data.
 
@@ -124,7 +174,7 @@ git push
 
 Images live in `data/images/{game-id}.jpg`, cropped to **600×450 (4:3)**.
 
-To fetch images for new games via Wikipedia's open API:
+**Option 1 — Fetch from Wikipedia:**
 
 ```bash
 # 1. Add the game's Wikipedia article title to WIKI_TITLES in scripts/fetch_images.py
@@ -132,9 +182,19 @@ To fetch images for new games via Wikipedia's open API:
 .venv\Scripts\python scripts/fetch_images.py
 ```
 
-The script downloads, center-crops, saves the JPEG, and updates `image_path` in `games.json`. After running, commit both the image and the updated `grimoire.db` (re-save the game via The Scribe to pick up the new path, or update the db directly).
+The script downloads, center-crops, and saves the JPEG. Update `image_path` in the database via The Scribe's image upload field or directly in the seed script.
 
-To manually add a cover image: place a JPEG in `data/images/` named `{game-id}.jpg` and update `image_path` in the database via The Scribe's image upload field.
+**Option 2 — Generate a styled placeholder:**
+
+```bash
+# 1. Add an entry to the GAMES list in scripts/generate_placeholder_images.py
+# 2. Run the script
+.venv\Scripts\python scripts/generate_placeholder_images.py
+```
+
+Generates a 600×450 JPEG with the game title and a thematic motif using the app's gold/navy color scheme.
+
+**Option 3 — Manual upload:** Place a JPEG in `data/images/` named `{game-id}.jpg` and set `image_path` via The Scribe.
 
 ---
 
@@ -178,4 +238,86 @@ all_pages = [codex, tome, scribe, your_page] if is_local else [codex, tome, your
 
 ```python
 st.page_link(your_page, label="Your Title", icon="🗺️")
+```
+
+---
+
+## Adding or Updating Game Content with AI
+
+Use the prompt below to have an AI assistant (e.g. Claude) draft or rewrite game content from a rulebook. Always review the draft before writing it to the database.
+
+### Content guidelines
+
+- **Language**: Suitable for ages 10 and up. Avoid jargon adults use casually but kids wouldn't (e.g. "factions", "paranoia", "face value", "forgoing").
+- **Theme**: Written as a short narrative story. Must naturally include the winning condition — the reader should know how to win just from reading the theme.
+- **Action names**: Use `**Bold**` markdown for action names in `main_actions`, `card_effects`, and `combo_cards`.
+- **Game ID**: Use snake_case (e.g. `lunar_creamery`), not hyphens.
+- **Optional fields**: Leave `card_effects`, `combo_cards`, `scoring`, and `advanced_rule` out entirely if the game doesn't need them.
+
+### Prompt template
+
+```
+I need you to draft game content for Grimoire, a board game reference app.
+Read the attached rulebook and fill out the fields below.
+
+Present the full draft for my review — do NOT write anything to the database yet.
+
+Content guidelines:
+- Language must be understandable for a 10-year-old. Only simplify where genuinely necessary.
+- The `theme` field must be a short narrative story (3–5 sentences) that naturally captures the winning condition. The reader should know how to win just from reading it.
+- Use **Bold** markdown for action names in list fields.
+- Game ID must be snake_case.
+- Only include `card_effects`, `combo_cards`, `scoring`, and `advanced_rule` if the game actually has those.
+
+Required fields:
+- id (snake_case)
+- title
+- weight ("light", "medium", or "heavy")
+- bgg_weight (1.0–5.0)
+- min_players / max_players
+- play_time
+- mechanics (list)
+- description (2–3 sentence catalog blurb)
+- theme (narrative, includes winning condition)
+- objective (1–2 sentences)
+- setup (ordered list)
+- round_structure (list of phases)
+- main_actions (list, bold action names)
+- end_game_condition
+- teaching_tips (list, 4 tips)
+- strategy_tips (list, 4 tips)
+- quiz (5 multiple-choice questions, 4 options each, include answer_index 0–3)
+
+Optional fields (include only if relevant):
+- card_effects (list, bold card names)
+- combo_cards (list, bold card combinations)
+- scoring (list of scoring rules)
+- advanced_rule { name, summary, locking?, unlocking?, details? }
+
+[Attach rulebook here]
+```
+
+### After the AI drafts the content
+
+1. Review all fields — check for accuracy against the rulebook and language clarity.
+2. Use The Scribe to enter the content, **or** write a seed script based on the existing ones in `scripts/` and run it:
+
+```bash
+.venv\Scripts\python scripts/seed_your_game.py
+```
+
+3. If the game has a duplicate entry with a hyphen-based ID (old convention), delete it:
+
+```python
+import utils.db as db
+db.init_db()
+db.delete_game("old-hyphen-id")
+```
+
+4. Commit and push:
+
+```bash
+git add data/grimoire.db
+git commit -m "update game: <title>"
+git push
 ```

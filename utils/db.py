@@ -6,8 +6,15 @@ DB_PATH = Path(__file__).parent.parent / "data" / "grimoire.db"
 
 _LIST_FIELDS = (
     "mechanics", "setup", "round_structure",
-    "main_actions", "teaching_tips", "strategy_tips",
+    "main_actions", "card_effects", "combo_cards",
+    "scoring", "teaching_tips", "strategy_tips",
 )
+
+
+def _maybe_add_column(conn: sqlite3.Connection, table: str, column: str, typedef: str) -> None:
+    existing = {row[1] for row in conn.execute(f"PRAGMA table_info({table})").fetchall()}
+    if column not in existing:
+        conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {typedef}")
 
 
 def _connect() -> sqlite3.Connection:
@@ -38,8 +45,12 @@ def init_db() -> None:
             round_structure    TEXT,
             main_actions       TEXT,
             end_game_condition TEXT,
+            card_effects       TEXT,
+            combo_cards        TEXT,
+            scoring            TEXT,
             teaching_tips      TEXT,
-            strategy_tips      TEXT
+            strategy_tips      TEXT,
+            advanced_rule      TEXT
         );
 
         CREATE TABLE IF NOT EXISTS quiz_questions (
@@ -51,6 +62,10 @@ def init_db() -> None:
             answer_index   INTEGER NOT NULL
         );
     """)
+    _maybe_add_column(conn, "games", "card_effects", "TEXT")
+    _maybe_add_column(conn, "games", "combo_cards", "TEXT")
+    _maybe_add_column(conn, "games", "scoring", "TEXT")
+    _maybe_add_column(conn, "games", "advanced_rule", "TEXT")
     conn.commit()
     conn.close()
 
@@ -60,6 +75,8 @@ def _row_to_game(row: sqlite3.Row) -> dict:
     for field in _LIST_FIELDS:
         raw = g.get(field)
         g[field] = json.loads(raw) if raw else []
+    adv_raw = g.get("advanced_rule")
+    g["advanced_rule"] = json.loads(adv_raw) if adv_raw else None
     return g
 
 
@@ -109,18 +126,23 @@ def upsert_game(game: dict) -> None:
     for field in _LIST_FIELDS:
         data[field] = json.dumps(data.get(field) or [], ensure_ascii=False)
 
+    adv = data.get("advanced_rule")
+    data["advanced_rule"] = json.dumps(adv, ensure_ascii=False) if adv else None
+
     conn = _connect()
     conn.execute("""
         INSERT INTO games (
             id, title, weight, bgg_weight, min_players, max_players,
             play_time, image_url, image_path, mechanics, description,
             theme, objective, setup, round_structure, main_actions,
-            end_game_condition, teaching_tips, strategy_tips
+            card_effects, combo_cards, end_game_condition, scoring,
+            teaching_tips, strategy_tips, advanced_rule
         ) VALUES (
             :id, :title, :weight, :bgg_weight, :min_players, :max_players,
             :play_time, :image_url, :image_path, :mechanics, :description,
             :theme, :objective, :setup, :round_structure, :main_actions,
-            :end_game_condition, :teaching_tips, :strategy_tips
+            :card_effects, :combo_cards, :end_game_condition, :scoring,
+            :teaching_tips, :strategy_tips, :advanced_rule
         )
         ON CONFLICT(id) DO UPDATE SET
             title              = excluded.title,
@@ -138,9 +160,13 @@ def upsert_game(game: dict) -> None:
             setup              = excluded.setup,
             round_structure    = excluded.round_structure,
             main_actions       = excluded.main_actions,
+            card_effects       = excluded.card_effects,
+            combo_cards        = excluded.combo_cards,
             end_game_condition = excluded.end_game_condition,
+            scoring            = excluded.scoring,
             teaching_tips      = excluded.teaching_tips,
-            strategy_tips      = excluded.strategy_tips
+            strategy_tips      = excluded.strategy_tips,
+            advanced_rule      = excluded.advanced_rule
     """, data)
 
     conn.execute("DELETE FROM quiz_questions WHERE game_id = ?", (data["id"],))
