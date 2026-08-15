@@ -1,4 +1,6 @@
+import json
 import sys
+import time
 from pathlib import Path
 
 import streamlit as st
@@ -47,16 +49,88 @@ if not game:
 
 game_id: str = game["id"]
 
+# Browsers use document.title as the default filename when printing/saving
+# as PDF; Streamlit leaves it fixed at the app's page_title ("Grimoire"), so
+# set it to the game's title for the duration of this page.
+st.components.v1.html(
+    f"<script>window.parent.document.title = {json.dumps(game['title'])};</script>",
+    height=0,
+)
+
+# ── Print styling ─────────────────────────────────────────────────────────────
+st.markdown(
+    """
+    <style>
+    @media print {
+        [data-testid="stSidebar"],
+        [data-testid="stHeader"],
+        [data-testid="stToolbar"],
+        #MainMenu,
+        footer,
+        .stButton,
+        .no-print {
+            display: none !important;
+        }
+        /* The app theme is light-on-dark; force a light-on-white
+           page so printed/PDF output stays legible regardless of
+           the browser's "print background graphics" setting. */
+        html, body, .stApp,
+        [data-testid="stAppViewContainer"],
+        [data-testid="stMain"],
+        [data-testid="stMainBlockContainer"] {
+            background: #ffffff !important;
+        }
+        [data-testid="stMain"] * {
+            color: #000000 !important;
+            background-color: transparent !important;
+            border-color: #999999 !important;
+            box-shadow: none !important;
+        }
+        /* Compact layout: shrinks text, spacing, and images together
+           so more rules content fits per printed page. `zoom` scales
+           the whole rendered subtree (unlike `transform`), so it
+           doesn't need per-element font-size/margin overrides. */
+        [data-testid="stMain"] {
+            zoom: 0.68;
+        }
+        [data-testid="stVerticalBlock"] {
+            gap: 0.35rem !important;
+        }
+        [data-testid="stElementContainer"] {
+            margin-bottom: 0 !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # ── Navigation ────────────────────────────────────────────────────────────────
-nav_col, edit_col = st.columns([6, 1])
+if is_local:
+    nav_col, print_col, edit_col = st.columns([5, 1, 1])
+else:
+    nav_col, print_col = st.columns([6, 1])
+
 with nav_col:
     if st.button("← Return to The Codex"):
         st.switch_page("pages/codex.py")
-with edit_col:
-    if is_local and st.button("✏️ Edit", use_container_width=True):
-        st.session_state["scribe_game_id"] = game_id
-        st.session_state.pop("scribe_ready", None)
-        st.switch_page("pages/scribe.py")
+with print_col:
+    if st.button("🖨️ Print", use_container_width=True):
+        st.session_state["_do_print"] = True
+
+if st.session_state.pop("_do_print", False):
+    # The nonce forces the srcdoc to differ between reruns, otherwise
+    # Streamlit reuses the same iframe and the script never re-fires.
+    nonce = time.time()
+    st.components.v1.html(
+        f"<script>/* {nonce} */ window.parent.print();</script>", height=0
+    )
+if is_local:
+    with edit_col:
+        if st.button("✏️ Edit", use_container_width=True):
+            st.session_state["scribe_game_id"] = game_id
+            st.session_state.pop("scribe_ready", None)
+            st.switch_page("pages/scribe.py")
 
 st.markdown("---")
 
