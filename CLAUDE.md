@@ -20,7 +20,15 @@ type nul > .local   # Windows; use `touch .local` on macOS/Linux
 .venv\Scripts\streamlit run app.py
 ```
 
-There is no test suite, linter, or build step in this repo — verify changes by running the app and clicking through the affected page.
+There is no linter or build step in this repo. See "Testing" below for the unit test suite.
+
+## Testing
+
+Unit tests live in `tests/` and run with pytest, configured via `pytest.ini` (adds the repo root to `sys.path` so `from utils import db` works). Install dev deps once with `.venv\Scripts\pip install -r requirements-dev.txt`, then run the whole suite with `.venv\Scripts\python -m pytest -q`.
+
+- Any new code change (new logic, a bug fix, an edit to existing behavior) must come with unit tests covering it, and the full suite must be run as the last step before considering the change done — fix failures rather than reporting the task complete with red tests.
+- `utils/db.py` is the primary unit-testable surface: pure CRUD/JSON-encoding logic against SQLite. `tests/conftest.py` provides a `test_db` fixture that points `db.DB_PATH` at an isolated per-test temp file via `monkeypatch` — never point tests at `data/grimoire.db`, since that's the committed, deployed data source. It also provides a `make_game` fixture that builds a full valid game dict (every field `upsert_game`'s named-params query requires) with overridable fields via `make_game(**overrides)`.
+- `pages/*.py` are Streamlit UI and are not covered by this suite (doing so would need `streamlit.testing.v1.AppTest`, a heavier setup) — for those, still verify changes by running the app and clicking through the affected page, per "Setup & running" above.
 
 ## Local-only write mode
 
