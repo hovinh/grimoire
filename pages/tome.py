@@ -50,10 +50,13 @@ if not game:
 game_id: str = game["id"]
 
 # Browsers use document.title as the default filename when printing/saving
-# as PDF; Streamlit leaves it fixed at the app's page_title ("Grimoire"), so
-# set it to the game's title for the duration of this page.
+# as PDF; Streamlit resets it back to the app's page_title ("Grimoire") on
+# every rerun, so this has to reapply the game's title every render too. The
+# nonce forces the srcdoc to differ each time, otherwise Streamlit reuses the
+# same iframe and the script never re-fires.
 st.components.v1.html(
-    f"<script>window.parent.document.title = {json.dumps(game['title'])};</script>",
+    f"<script>/* {time.time()} */ "
+    f"window.parent.document.title = {json.dumps(game['title'])};</script>",
     height=0,
 )
 
@@ -86,18 +89,41 @@ st.markdown(
             border-color: #999999 !important;
             box-shadow: none !important;
         }
-        /* Compact layout: shrinks text, spacing, and images together
-           so more rules content fits per printed page. `zoom` scales
-           the whole rendered subtree (unlike `transform`), so it
-           doesn't need per-element font-size/margin overrides. */
-        [data-testid="stMain"] {
-            zoom: 0.68;
+        /* Compact layout: Streamlit's typography is rem-based (e.g.
+           paragraphs render at 1.5rem), so shrinking the root
+           font-size scales text, line-height, and rem-based spacing
+           together, in proportion, without fighting Streamlit's own
+           line-height math the way separate per-element font-size
+           and margin overrides did (that caused wrapped list lines
+           to overlap the next bullet). `zoom` was tried before that,
+           but it isn't a standard CSS property and the real
+           print-to-PDF pipeline renders it inconsistently — text
+           and background color would drop out entirely. */
+        html {
+            font-size: 11px !important;
+        }
+        [data-testid="stImage"] img {
+            max-width: 60% !important;
+            height: auto !important;
         }
         [data-testid="stVerticalBlock"] {
-            gap: 0.35rem !important;
+            gap: 0.3rem !important;
+        }
+        [data-testid="stHorizontalBlock"] {
+            gap: 0.5rem !important;
         }
         [data-testid="stElementContainer"] {
             margin-bottom: 0 !important;
+        }
+        [data-testid="stRadio"] label {
+            padding: 0 !important;
+            min-height: 0 !important;
+        }
+        [data-testid="stRadio"] > div {
+            gap: 0.15rem !important;
+        }
+        hr {
+            margin: 6px 0 !important;
         }
     }
     </style>
@@ -118,13 +144,6 @@ with print_col:
     if st.button("🖨️ Print", use_container_width=True):
         st.session_state["_do_print"] = True
 
-if st.session_state.pop("_do_print", False):
-    # The nonce forces the srcdoc to differ between reruns, otherwise
-    # Streamlit reuses the same iframe and the script never re-fires.
-    nonce = time.time()
-    st.components.v1.html(
-        f"<script>/* {nonce} */ window.parent.print();</script>", height=0
-    )
 if is_local:
     with edit_col:
         if st.button("✏️ Edit", use_container_width=True):
@@ -273,3 +292,17 @@ with col_strat:
     st.subheader("♟️ Strategy Tips")
     for tip in game["strategy_tips"]:
         st.markdown(f"- {tip}")
+
+# ── Print trigger ─────────────────────────────────────────────────────────────
+# Placed after all page content so the print dialog can't fire before
+# Streamlit has finished rendering the rest of the page (it did, when this
+# lived right after the nav buttons — the printed page's content below the
+# fold came out unstyled/faded because it hadn't painted yet). The nonce
+# forces the srcdoc to differ between reruns, and the setTimeout gives the
+# browser one more frame to finish painting before the snapshot is taken.
+if st.session_state.pop("_do_print", False):
+    st.components.v1.html(
+        f"<script>/* {time.time()} */ "
+        "setTimeout(() => window.parent.print(), 250);</script>",
+        height=0,
+    )
