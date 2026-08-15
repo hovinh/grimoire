@@ -102,6 +102,7 @@ game = {
     },
     "teaching_tips": [
         "Explain the three team goals before dealing any cards — Red collects Lava Gems, Blue collects Snow Diamonds, Solo wants the Dark Swallow to trigger. Players need this picture in their heads before the sneakiness begins.",
+        "Before dealing, sort the Item Card deck into two piles — single-effect cards and combo cards — and walk through each pile's effects out loud. Explaining singles first, then combos, keeps players from confusing what a combo card does alone versus paired.",
         "Make clear that Team Cards stay face-down the whole game. Players are allowed to lie about their team, so bluffing is a core skill, not cheating.",
         "Walk through the Dark Swallow moment before the first game: when it appears, everyone has a split second to play a Mace of Light. Make sure everyone knows what those cards look like and what they do.",
         "Remind players that a wrong victory proclamation hands the win to the other team instantly — encourage everyone to double-check before standing up.",
@@ -110,6 +111,8 @@ game = {
         "Use Reveal Identity early to confirm or deny allies before you share gems — trading a Lava Gem to an unknown player might be handing victory to the enemy.",
         "If you're on Red or Blue team, hold onto Cancel cards specifically for the Dark Swallow moment. Letting it go through gives the game to the Solo player.",
         "As the Solo player, act like a helpful teammate. Try to make sure the Mace of Light cards get traded away or played on other things before the Dark Swallow appears.",
+        "As the Solo player, keep the pace brisk — every extra card drawn from the deck raises your odds of hitting the Dark Swallow. Encourage quick Passes and discourage stalling trades rather than sitting back.",
+        "If the game feels like it's speeding up for no clear reason, be suspicious — that pace often means the Solo player is trying to draw into the Dark Swallow faster.",
         "In the 4-player Advanced Rule, play carefully in the early rounds — nobody knows if a Solo player is even in the game, so a quick victory proclamation based on a wrong read of your ally loses instantly.",
     ],
     "quiz": [
