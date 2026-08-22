@@ -48,7 +48,8 @@ game = {
         "Sort cards by the symbols on their backs into separate piles (Team Cards, Item Cards).",
         "Pick Team Cards based on player count: 3 players = 1 Red, 1 Blue, 1 Solo; 4 players = 2 Red, 2 Blue; 5 players = 2 Red, 2 Blue, 1 Solo.",
         "Shuffle and deal one Team Card face-down to each player. Everyone keeps their team a secret. Put leftover Team Cards back in the box without looking at them.",
-        "Shuffle all Item Cards and deal 5 to each player. The remaining cards form the drawing deck.",
+        "Set the Dark Swallow card face-down off to the side. Shuffle the rest of the Item Cards and deal 5 to each player.",
+        "Once everyone has their 5 cards, shuffle the Dark Swallow back into the remaining Item Cards at a random position. This becomes the drawing deck.",
     ],
     "round_structure": [
         "Players take turns clockwise. The player who last physically touched the game box goes first.",
